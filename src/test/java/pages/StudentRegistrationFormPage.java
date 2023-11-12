@@ -27,19 +27,6 @@ public class StudentRegistrationFormPage extends Date {
             addressInput = $("#currentAddress"),
             button = $("#submit");
 
-    public String
-//            pictureName = "photo_cat.jpg",
-//                day = "17",
-//                mouth = "June",
-//                year = "2001",
-//                stateButton = "#state",
-//                stateName = "NCR",
-//                cityButton = "#city",
-//                cityName ="Delhi",
-                color = "rgba(73, 80, 87, 1)";
-
-
-
 
     public StudentRegistrationFormPage openPage() {
         open("/automation-practice-form");
