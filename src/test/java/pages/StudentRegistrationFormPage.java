@@ -3,14 +3,13 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.AssertResult;
 import pages.components.Calendar;
-import pages.components.Date;
 import pages.components.ListBox;
 
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class StudentRegistrationFormPage extends Date {
+public class StudentRegistrationFormPage {
 
     Calendar calendar =new Calendar();
     ListBox listBox = new ListBox();
@@ -35,68 +34,68 @@ public class StudentRegistrationFormPage extends Date {
         return this;
     }
 
-    public StudentRegistrationFormPage setFirstName() {
-        firstNameInput.setValue(name);
+    public StudentRegistrationFormPage setFirstName(String value) {
+        firstNameInput.setValue(value);
         return this;
     }
 
-    public StudentRegistrationFormPage setLastName() {
-        lastNameInput.setValue(lastName);
+    public StudentRegistrationFormPage setLastName(String value) {
+        lastNameInput.setValue(value);
 
         return this;
     }
 
-    public StudentRegistrationFormPage setEmail() {
-        userEmailInput.setValue(email);
+    public StudentRegistrationFormPage setEmail(String value) {
+        userEmailInput.setValue(value);
         return this;
     }
 
-    public StudentRegistrationFormPage setGender() {
-        genderWrapper.$(byText(gender)).click();
+    public StudentRegistrationFormPage setGender(String value) {
+        genderWrapper.$(byText(value)).click();
         return this;
     }
 
-    public StudentRegistrationFormPage setMobileNumber() {
-        userNumberInput.setValue(mobileNumber);
+    public StudentRegistrationFormPage setMobileNumber(String value) {
+        userNumberInput.setValue(value);
         return this;
     }
 
-    public StudentRegistrationFormPage setDateOfBirth() {
+    public StudentRegistrationFormPage setDateOfBirth(String day, String mouth, String year) {
         calendarInput.click();
-        calendar.setDate(this.day, this.mouth, this.year);
+        calendar.setDate(day, mouth, year);
 
         return this;
     }
 
-    public StudentRegistrationFormPage chooseSubject() {
-        subjectInput.setValue(subjectValue).pressEnter();
+    public StudentRegistrationFormPage chooseSubject(String value) {
+        subjectInput.setValue(value).pressEnter();
         return this;
     }
 
-    public StudentRegistrationFormPage chooseHobbie() {
-        hobbiesWrapper.$(byText(hobbieValue)).click();
+    public StudentRegistrationFormPage chooseHobbie(String value) {
+        hobbiesWrapper.$(byText(value)).click();
         return this;
     }
 
-    public StudentRegistrationFormPage uploadPicture() {
-        loadFied.uploadFromClasspath(pictureName);
+    public StudentRegistrationFormPage uploadPicture(String value) {
+        loadFied.uploadFromClasspath(value);
         return this;
     }
 
-    public StudentRegistrationFormPage setAddress() {
-        addressInput.setValue(address);
-        return this;
-    }
-
-
-    public StudentRegistrationFormPage chooseState() {
-        listBox.listboxItem(this.stateButton, stateName);
+    public StudentRegistrationFormPage setAddress(String value) {
+        addressInput.setValue(value);
         return this;
     }
 
 
-    public StudentRegistrationFormPage chooseCity() {
-        listBox.listboxItem(this.cityButton, cityName);
+    public StudentRegistrationFormPage chooseState(String button, String value) {
+        listBox.listboxItem(button, value);
+        return this;
+    }
+
+
+    public StudentRegistrationFormPage chooseCity(String button, String value) {
+        listBox.listboxItem(button, value);
         return this;
     }
 
@@ -105,13 +104,13 @@ public class StudentRegistrationFormPage extends Date {
         return this;
     }
 
-    public StudentRegistrationFormPage checkResult() {
+    public StudentRegistrationFormPage checkResult(String key, String value) {
         assertResult.checkResult(key, value);
         return this;
     }
 
-    public StudentRegistrationFormPage requiredFieldNameChangeColorToRed() {
-        $(firstNameInput).shouldHave(cssValue("color", color));
+    public StudentRegistrationFormPage requiredFieldNameChangeColor(String value) {
+        assertResult.checkColorOfField(firstNameInput,value);
         return this;
     }
 

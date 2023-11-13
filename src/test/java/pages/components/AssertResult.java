@@ -1,5 +1,6 @@
 package pages.components;
 
+import com.codeborne.selenide.SelenideElement;
 import pages.StudentRegistrationFormPage;
 
 import static com.codeborne.selenide.Condition.cssValue;
@@ -13,8 +14,8 @@ public class AssertResult {
                 .shouldHave(text(value));
     }
 
-    public void checkColorOfField(String key, String value) {
-        $(key).shouldHave(cssValue("color", value));
+    public void checkColorOfField(SelenideElement selector, String value) {
+        $(selector).shouldHave(cssValue("color", value));
     }
 
 }
