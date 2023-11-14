@@ -36,6 +36,7 @@ public class StudentRegistrationFormTest extends BaseTest {
                 .checkResult(data.keyMassive[9], String.format("%s %s", data.stateName, data.cityName));
     }
 
+
     @Test
     public void fillRequiredFields() {
         studentRegistrationFormPage.openPage()

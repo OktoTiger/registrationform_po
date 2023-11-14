@@ -1,5 +1,6 @@
 package data;
 
+
 public class DataStudentRegistrationForm {
     public String firstName = "Кот",
             lastName = "Матроскин",

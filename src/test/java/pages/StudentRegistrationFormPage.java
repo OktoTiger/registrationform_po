@@ -9,6 +9,7 @@ import pages.components.ListBox;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+
 public class StudentRegistrationFormPage {
 
     Calendar calendar = new Calendar();
