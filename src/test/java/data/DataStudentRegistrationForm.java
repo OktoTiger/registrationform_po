@@ -26,8 +26,8 @@ public class DataStudentRegistrationForm {
                     "July", "August", "September", "October", "November", "December"),
             day = randomValue.getDayDependingOnMouth(mouth),
             year = randomValue.getRandomIntToString(1990, 2005),
-            subjectValue = faker.options().option("A", "B", "C", "D", "E", "J",
-                    "K", "O", "P", "Q", "S", "U"),
+            subjectValue = faker.options().option("A", "B", "C", "D", "E",
+                             "O", "P", "R", "S", "U"),
             pictureName = "photo_cat.jpg",
             hobbieValue = faker.options().option("Sports", "Reading", "Music"),
             address = faker.address().streetAddress(),
@@ -52,7 +52,6 @@ public class DataStudentRegistrationForm {
         }
 
         public String getCityDependingOnState(String stateName) {
-            Faker faker = new Faker();
             switch (stateName) {
                 case "NCR":
                     return faker.options().option("Delhi", "Gurgaon", "Noida");
@@ -67,9 +66,7 @@ public class DataStudentRegistrationForm {
             }
 
         }
-
         public String getDayDependingOnMouth(String mouth) {
-            String day = "";
             switch (mouth) {
                 case "January":
                 case "March":
@@ -77,26 +74,25 @@ public class DataStudentRegistrationForm {
                 case "July":
                 case "August":
                 case "December":
-                    day = faker.options().option("01", "02", "03", "04", "05", "06", "07", "08", "09",
+                    return faker.options().option("01", "02", "03", "04", "05", "06", "07", "08", "09",
                             "10", "11", "12", "13", "14", "15", "16", "17", "18",
                             "19", "20", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
-                    break;
                 case "April":
                 case "June":
                 case "September":
                 case "November":
-                    day = faker.options().option("01", "02", "03", "04", "05", "06", "07", "08", "09",
+                   return faker.options().option("01", "02", "03", "04", "05", "06", "07", "08", "09",
                             "10", "11", "12", "13", "14", "15", "16", "17", "18",
                             "19", "20", "22", "23", "24", "25", "26", "27", "28", "29", "30");
-                    break;
                 case "February":
-                    day = faker.options().option("01", "02", "03", "04", "05", "06", "07", "08", "09",
+                    return faker.options().option("01", "02", "03", "04", "05", "06", "07", "08", "09",
                             "10", "11", "12", "13", "14", "15", "16", "17", "18",
                             "19", "20", "22", "23", "24", "25", "26", "27", "28");
-                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid state: " + cityName);
             }
-            return day;
         }
+
 
     }
 
