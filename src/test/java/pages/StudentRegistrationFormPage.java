@@ -1,17 +1,17 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.AssertResult;
 import pages.components.Calendar;
 import pages.components.ListBox;
 
-import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class StudentRegistrationFormPage {
 
-    Calendar calendar =new Calendar();
+    Calendar calendar = new Calendar();
     ListBox listBox = new ListBox();
     AssertResult assertResult = new AssertResult();
     private SelenideElement firstNameInput = $("#firstName"),
@@ -24,7 +24,8 @@ public class StudentRegistrationFormPage {
             hobbiesWrapper = $("#hobbiesWrapper"),
             loadFied = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
-            button = $("#submit");
+            button = $("#submit"),
+            tableResult = $("table");
 
 
     public StudentRegistrationFormPage openPage() {
@@ -105,13 +106,13 @@ public class StudentRegistrationFormPage {
     }
 
     public StudentRegistrationFormPage checkResult(String key, String value) {
-        assertResult.checkResult(key, value);
+        assertResult.checkResultFilledTable(key, value);
         return this;
     }
 
-    public StudentRegistrationFormPage requiredFieldNameChangeColor(String value) {
-        assertResult.checkColorOfField(firstNameInput,value);
-        return this;
+
+    public void checkTableIsNotAppeared() {
+        tableResult.shouldNotBe(Condition.visible);
     }
 
 }
