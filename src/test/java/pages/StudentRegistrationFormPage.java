@@ -28,7 +28,8 @@ public class StudentRegistrationFormPage {
             button = $("#submit"),
             tableResult = $("table");
 
-
+    private String stateButton = "#state";
+    private String cityButton = "#city";
     public StudentRegistrationFormPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
@@ -90,14 +91,14 @@ public class StudentRegistrationFormPage {
     }
 
 
-    public StudentRegistrationFormPage chooseState(String button, String value) {
-        listBox.listboxItem(button, value);
+    public StudentRegistrationFormPage chooseState(String value) {
+        listBox.listboxItem(stateButton, value);
         return this;
     }
 
 
-    public StudentRegistrationFormPage chooseCity(String button, String value) {
-        listBox.listboxItem(button, value);
+    public StudentRegistrationFormPage chooseCity(String value) {
+        listBox.listboxItem(cityButton, value);
         return this;
     }
 
@@ -113,6 +114,7 @@ public class StudentRegistrationFormPage {
 
 
     public void checkTableIsNotAppeared() {
+
         tableResult.shouldNotBe(Condition.visible);
     }
 

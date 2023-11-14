@@ -4,52 +4,34 @@ package data;
 import com.github.javafaker.Faker;
 
 import java.util.Locale;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class DataStudentRegistrationForm {
 
-
     Faker faker = new Faker(new Locale("ru"));
-    Faker emailfaker = new Faker(new Locale("en-GB"));
+    Faker fakerEN = new Faker(new Locale("en-GB"));
     RandomValue randomValue = new RandomValue();
 
-    String[] stateMassive = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
     public String[] keyMassive = {"Student Name", "Student Email", "Gender", "Mobile", "Date of Birth",
             "Subjects", "Hobbies", "Picture", "Address", "State and City"};
 
     public String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
-            email = emailfaker.internet().emailAddress(),
+            email = fakerEN.internet().emailAddress(),
             gender = faker.options().option("Male", "Female", "Other"),
             mobileNumber = faker.phoneNumber().subscriberNumber(10),
-            mouth = faker.options().option("January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"),
-            day = randomValue.getDayDependingOnMouth(mouth),
-            year = randomValue.getRandomIntToString(1990, 2005),
+            month = faker.options().option("January", "February", "March", "April", "May",
+                          "June","July", "August", "September", "October", "November", "December"),
+            day = randomValue.getDayDependingOnMonth(month),
+            year = String.valueOf(faker.number().numberBetween(1960,1999)),
             subjectValue = faker.options().option("A", "B", "C", "D", "E",
                              "O", "P", "R", "S", "U"),
             pictureName = "photo_cat.jpg",
             hobbieValue = faker.options().option("Sports", "Reading", "Music"),
             address = faker.address().streetAddress(),
-            stateButton = "#state",
-            stateName = randomValue.getRandomItemFromArray(stateMassive),
-            cityButton = "#city",
+            stateName = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
             cityName = randomValue.getCityDependingOnState(stateName);
 
     class RandomValue {
-        public String getRandomItemFromArray(String[] array) {
-            int index = getRandomInt(0, array.length - 1);
-            return array[index];
-        }
-
-        public int getRandomInt(int min, int max) {
-
-            return ThreadLocalRandom.current().nextInt(min, max + 1);
-        }
-
-        public String getRandomIntToString(int min, int max) {
-            return String.valueOf(ThreadLocalRandom.current().nextInt(min, max + 1));
-        }
 
         public String getCityDependingOnState(String stateName) {
             switch (stateName) {
@@ -66,8 +48,8 @@ public class DataStudentRegistrationForm {
             }
 
         }
-        public String getDayDependingOnMouth(String mouth) {
-            switch (mouth) {
+        public String getDayDependingOnMonth(String month) {
+            switch (month) {
                 case "January":
                 case "March":
                 case "May":
