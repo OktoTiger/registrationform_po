@@ -15,7 +15,7 @@ public class DataStudentRegistrationForm {
 
     String[] stateMassive = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
     public String[] keyMassive = {"Student Name", "Student Email", "Gender", "Mobile", "Date of Birth",
-                                "Subjects", "Hobbies", "Picture", "Address", "State and City"};
+            "Subjects", "Hobbies", "Picture", "Address", "State and City"};
 
     public String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
@@ -23,11 +23,11 @@ public class DataStudentRegistrationForm {
             gender = faker.options().option("Male", "Female", "Other"),
             mobileNumber = faker.phoneNumber().subscriberNumber(10),
             mouth = faker.options().option("January", "February", "March", "April", "May", "June",
-                                        "July", "August", "September", "October", "November", "December"),
+                    "July", "August", "September", "October", "November", "December"),
             day = randomValue.getDayDependingOnMouth(mouth),
             year = randomValue.getRandomIntToString(1990, 2005),
             subjectValue = faker.options().option("A", "B", "C", "D", "E", "J",
-                                                    "K", "O", "P", "Q", "S", "U"),
+                    "K", "O", "P", "Q", "S", "U"),
             pictureName = "photo_cat.jpg",
             hobbieValue = faker.options().option("Sports", "Reading", "Music"),
             address = faker.address().streetAddress(),
@@ -52,25 +52,20 @@ public class DataStudentRegistrationForm {
         }
 
         public String getCityDependingOnState(String stateName) {
-            String city = "XXX";
-            if (stateName.equals("NCR")) {
-                String[] cityNameMassive = {"Delhi", "Gurgaon", "Noida"};
-                String city1 = getRandomItemFromArray(cityNameMassive);
-                city = city1;
-            } else if (stateName.equals("Uttar Pradesh")) {
-                String[] cityNameMassive = {"Agra", "Lucknow", "Merrut"};
-                String city2 = getRandomItemFromArray(cityNameMassive);
-                city = city2;
-            } else if (stateName.equals("Haryana")) {
-                String[] cityNameMassive = {"Karnal", "Panipat"};
-                String city3 = getRandomItemFromArray(cityNameMassive);
-                city = city3;
-            } else if (stateName.equals("Rajasthan")) {
-                String[] cityNameMassive = {"Jaipur", "Jaiselmer"};
-                String city4 = getRandomItemFromArray(cityNameMassive);
-                city = city4;
+            Faker faker = new Faker();
+            switch (stateName) {
+                case "NCR":
+                    return faker.options().option("Delhi", "Gurgaon", "Noida");
+                case "Uttar Pradesh":
+                    return faker.options().option("Agra", "Lucknow", "Merrut");
+                case "Haryana":
+                    return faker.options().option("Karnal", "Panipat");
+                case "Rajasthan":
+                    return faker.options().option("Jaipur", "Jaiselmer");
+                default:
+                    throw new IllegalArgumentException("Invalid state: " + stateName);
             }
-            return city;
+
         }
 
         public String getDayDependingOnMouth(String mouth) {
