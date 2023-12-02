@@ -1,6 +1,9 @@
 package test;
 
 import data.DataStudentRegistrationForm;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.StudentRegistrationFormPage;
 
@@ -9,6 +12,13 @@ public class StudentRegistrationFormTest extends BaseTest {
     DataStudentRegistrationForm data = new DataStudentRegistrationForm();
 
     @Test
+    @Tag("smoke")
+    @Feature("Регистрация студента")
+    @Story("Заполнение формы регистрации студента")
+    @Owner("Dmitry Nazarov")
+    @Link(value = "Student Registration Form",
+            url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Успешное заполнение всех полей формы регистрации студента")
     public void successfullyFillRegistrationForm() {
         studentRegistrationFormPage.openPage()
                 .setFirstName(data.firstName)
@@ -38,6 +48,13 @@ public class StudentRegistrationFormTest extends BaseTest {
 
 
     @Test
+    @Tag("smoke")
+    @Feature("Регистрация студента")
+    @Story("Заполнение формы регистрации студента")
+    @Owner("Dmitry Nazarov")
+    @Link(value = "Student Registration Form",
+            url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Успешное заполнение обязательных полей формы регистрации студента")
     public void fillRequiredFields() {
         studentRegistrationFormPage.openPage()
                 .setFirstName(data.firstName)
@@ -52,6 +69,13 @@ public class StudentRegistrationFormTest extends BaseTest {
     }
 
     @Test
+    @Feature("Регистрация студента")
+    @Story("Заполнение формы регистрации студента")
+    @Owner("Dmitry Nazarov")
+    @Link(value = "Student Registration Form",
+            url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Негативная проверка.Не заполнены обязательные поля " +
+            "на форме регистрации студента")
     public void negativeCheck() {
         studentRegistrationFormPage.openPage()
                 .clickButton()
