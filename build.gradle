@@ -33,9 +33,12 @@ dependencies {
                     "pi:2.0.7",
             "com.github.javafaker:javafaker:1.0.2",
             'io.qameta.allure:allure-selenide:2.19.0')
+    testImplementation 'junit:junit:4.13.1'
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
+
     useJUnitPlatform()
 
     testLogging {
@@ -49,5 +52,11 @@ tasks.withType(Test) {
 task smoke_test(type: Test) {
     useJUnitPlatform {
         includeTags("smoke")
+    }
+
+task property_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("property")
+        }
     }
 }
