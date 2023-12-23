@@ -13,6 +13,7 @@ public class StudentRegistrationFormTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("positive")
     @Feature("Регистрация студента")
     @Story("Заполнение формы регистрации студента")
     @Owner("Dmitry Nazarov")
@@ -49,6 +50,7 @@ public class StudentRegistrationFormTest extends BaseTest {
 
     @Test
     @Tag("smoke")
+    @Tag("positive")
     @Feature("Регистрация студента")
     @Story("Заполнение формы регистрации студента")
     @Owner("Dmitry Nazarov")
@@ -69,6 +71,7 @@ public class StudentRegistrationFormTest extends BaseTest {
     }
 
     @Test
+    @Tag("negative")
     @Feature("Регистрация студента")
     @Story("Заполнение формы регистрации студента")
     @Owner("Dmitry Nazarov")
