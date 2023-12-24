@@ -54,11 +54,6 @@ task smoke_test(type: Test) {
         includeTags("smoke")
     }
 
-task property_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("property")
-        }
-    }
 
 task positive_test(type: Test) {
     useJUnitPlatform {
